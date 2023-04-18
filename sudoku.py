@@ -34,10 +34,50 @@ class SudokuGenerator:
         return True
 
     def valid_in_box(self, row_start, col_start, num):
-        pass
+        # not completely sure of application
+        if 0 <= row_start <= 2:
+            row_start = 0
+        elif 3 <= row_start <= 5:
+            row_start = 3
+        elif 6 <= row_start <= 8:
+            row_start = 6
+
+        # based on row_start information, the row_start is adjusted so that the row_start variable
+        # starts at the first row of each of the 9 3x3 boxes of the Sudoku board, so that a repeated number
+        # can be checked only in a fixed 3x3 box of the Sudoku board
+        # row indices 0-2 are the first row of 3x3 boxes, 3-5 are the second row of 3x3 boxes, and 6-8 are the third row
+
+        if 0 <= col_start <= 2:
+            col_start = 0
+        elif 3 <= col_start <= 5:
+            col_start = 3
+        elif 6 <= col_start <= 8:
+            col_start = 6
+
+        # similar to above, the row_start and col_start are adjusted to start at the first row and col of each 3x3 box
+        # ex: row_start of 4 and col_start of 3 corresponds to the middle 3x3 box on board and to iterate through it
+        # row_start and col_start are changed so row_start = 3 and col_start = 3 (end would be end of box at 5, 5)
+
+        for row in range(row_start, row_start + 3):
+            for col in range(col_start, col_start + 3):
+                if self.get_board()[row][col] == num:
+                    return True
+        return False
+
+        # loops through rows from the specified row_start to row_start + 2
+        # and cols from col_start to col_start + 2, to determine if num is in a given 3x3 box
+        # row_start + 3 and col_start + 3 because end number in range func. is not inclusive
+
 
     def is_valid(self, row, col, num):
-        pass
+        if not self.valid_in_box(row, col, num):
+            return True
+        return False
+
+        # if the num is already in the 3x3 box, then is_valid returns False, if not, is_valid returns True
+
+        # not sure if this method should return false if user tries to change randomly generated numbers
+        # or if that is determined in a different method, if not this should work
 
     def fill_box(self, row_start, col_start):
         pass
