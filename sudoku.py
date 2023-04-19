@@ -128,6 +128,4 @@ class SudokuGenerator:
         pass
 
 
-sudoku = SudokuGenerator(0)
-print(sudoku.fill_box(0, 0))
-sudoku.print_board()
+
