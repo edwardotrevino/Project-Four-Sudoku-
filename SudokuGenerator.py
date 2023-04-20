@@ -1,11 +1,12 @@
-import random
+import math, random
 
 
 class SudokuGenerator:
 
-    def __init__(self, removed_cells):
+    def __init__(self, row_length, removed_cells):
         self.row_length = 9
         self.removed_cells = removed_cells
+        self.box_length = 3
         self.board = [["-", "-", "-", "-", "-", "-", "-", "-", "-"],
                       ["-", "-", "-", "-", "-", "-", "-", "-", "-"],
                       ["-", "-", "-", "-", "-", "-", "-", "-", "-"],
@@ -15,6 +16,7 @@ class SudokuGenerator:
                       ["-", "-", "-", "-", "-", "-", "-", "-", "-"],
                       ["-", "-", "-", "-", "-", "-", "-", "-", "-"],
                       ["-", "-", "-", "-", "-", "-", "-", "-", "-"]]
+
     def get_board(self):
         return self.board
 
@@ -31,7 +33,7 @@ class SudokuGenerator:
 
     def valid_in_col(self, col, num):  # for loop to iterate through each value of row, then col = self.get_board[row(i)][col(input)]
         for row in range(len(self.get_board())):
-            if num in self.get_board()[row][col]:
+            if num is self.get_board()[row][col]:
                 return False
         return True
 
@@ -55,6 +57,7 @@ class SudokuGenerator:
             col_start = 3
         elif 6 <= col_start <= 8:
             col_start = 6
+        
 
         # similar to above, the row_start and col_start are adjusted to start at the first row and col of each 3x3 box
         # ex: row_start of 4 and col_start of 3 corresponds to the middle 3x3 box on board and to iterate through it
@@ -70,10 +73,7 @@ class SudokuGenerator:
         # and cols from col_start to col_start + 2, to determine if num is in a given 3x3 box
         # row_start + 3 and col_start + 3 because end number in range func. is not inclusive
 
-
     def is_valid(self, row, col, num):
-        if self.get_board()[row][col] != "0":  #(eddie): testing for a zero here because a zero indicates an empty space
-            return False
         if self.valid_in_box(row, col, num) and self.valid_in_row(row, num) and self.valid_in_col(col, num):
             return True
         return False
@@ -82,7 +82,8 @@ class SudokuGenerator:
         # not sure if this method should return false if user tries to change randomly generated numbers
         # or if that is determined in a different method, if not this should work
 
-        # edit(Eddie), im assuming so because in the game you shouldn't be able to overwrite any cells
+     
+
     def fill_box(self, row_start, col_start):
         # Adjust row_start to the first row of the corresponding 3x3 box
         if 0 <= row_start <= 2:
@@ -114,18 +115,90 @@ class SudokuGenerator:
         for i in diagonal_box_indices:
             self.fill_box(i,i)
 
-
     def fill_remaining(self, row, col):
-        pass
+        if (col >= self.row_length and row < self.row_length - 1):
+            row += 1
+            col = 0
+        if row >= self.row_length and col >= self.row_length:
+            return True
+        if row < self.box_length:
+            if col < self.box_length:
+                col = self.box_length
+        elif row < self.row_length - self.box_length:
+            if col == int(row // self.box_length * self.box_length):
+                col += self.box_length
+        else:
+            if col == self.row_length - self.box_length:
+                row += 1
+                col = 0
+                if row >= self.row_length:
+                    return True
+
+        for num in range(1, self.row_length + 1):
+            if self.is_valid(row, col, num):
+                self.board[row][col] = num
+                if self.fill_remaining(row, col + 1):
+                    return True
+                self.board[row][col] = 0
+        return False
+    '''
+    DO NOT CHANGE
+    Provided for students
+    Fills the remaining cells of the board
+    Should be called after the diagonal boxes have been filled
+
+    Parameters:
+    row, col specify the coordinates of the first empty (0) cell
+    Return:
+    boolean (whether or not we could solve the board)
+    '''
 
     def fill_values(self):
-        pass
+        self.fill_diagonal()
+        self.fill_remaining(0, self.box_length)
+    '''
+    DO NOT CHANGE
+    Provided for students
+    Constructs a solution by calling fill_diagonal and fill_remaining
+    Parameters: None
+    Return: None
+    '''
 
     def remove_cells(self):
         pass
+    '''
+    Removes the appropriate number of cells from the board
+    This is done by setting some values to 0
+    Should be called after the entire solution has been constructed
+    i.e. after fill_values has been called
 
-    def generate_sudoku(size, removed):
-        pass
+    NOTE: Be careful not to 'remove' the same cell multiple times
+    i.e. if a cell is already 0, it cannot be removed again
+    Parameters: None
+    Return: None
+    '''
+
+def generate_sudoku(size, removed):
+    sudoku = SudokuGenerator(size, removed)
+    sudoku.fill_values()
+    board = sudoku.get_board()
+    sudoku.remove_cells()
+    board = sudoku.get_board()
+    return board
+'''
+DO NOT CHANGE
+Provided for students
+Given a number of rows and number of cells to remove, this function:
+1. creates a SudokuGenerator
+2. fills its values and saves this as the solved state
+3. removes the appropriate number of cells
+4. returns the representative 2D Python Lists of the board and solution
+Parameters:
+size is the number of rows/columns of the board (9 for this project)
+removed is the number of cells to clear (set to 0)
+Return: list[list] (a 2D Python list to represent the board)
+'''
+
 
 
 
