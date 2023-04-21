@@ -15,7 +15,7 @@ class Cell:
         self.value = value
 
     def set_sketched_value(self, value):
-        self.sketched_value = value
+        self.value = value
 
     def draw(self):
         # Determine the position and size of the cell on the screen

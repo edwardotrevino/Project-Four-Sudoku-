@@ -10,8 +10,9 @@ screen.fill(MENU_BG_COLOR)
 image = pygame.image.load("sudoku_test_img.jpeg")
 image = pygame.transform.scale(image, (600, 700))
 # adjusts image size to fit screen
-screen.blit(image, (0,0))
+screen.blit(image, (0, 0))
 # only a test image, did not upload to git, if it does not work I can upload the file to git or that line can be deleted
+
 
 def main_menu():
     main_menu_font = pygame.font.Font(MENU_FONT, MENU_TEXT_SIZE)
@@ -48,8 +49,8 @@ def main_menu():
     screen.blit(medium_button_box, medium_button_box_rect)
 
     medium_button_rect = pygame.draw.rect(screen, RECTANGLE_COLOR, pygame.Rect(246, 450, 108, 50), 5)
-    outer_rect_2 = pygame.draw.rect(screen, (0,0,0), pygame.Rect(246, 450, 108, 50), 2)
-    inner_rect_2 = pygame.draw.rect(screen, (0,0,0), pygame.Rect(250, 455, 100, 40), 2)
+    outer_rect_2 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(246, 450, 108, 50), 2)
+    inner_rect_2 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(250, 455, 100, 40), 2)
     # creating the medium button design outline
 
     hard_button_font = pygame.font.Font(BUTTON_TEXT_FONT, BUTTON_TEXT_SIZE)
@@ -61,11 +62,9 @@ def main_menu():
     screen.blit(hard_button_box, hard_button_box_rect)
 
     hard_button_rect = pygame.draw.rect(screen, RECTANGLE_COLOR, pygame.Rect(408, 450, 85, 50), 5)
-    outer_rect_3 = pygame.draw.rect(screen, (0,0,0), pygame.Rect(408, 450, 85, 50), 2)
-    inner_rect_3 = pygame.draw.rect(screen, (0,0,0), pygame.Rect(413, 455, 75, 40), 2)
+    outer_rect_3 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(408, 450, 85, 50), 2)
+    inner_rect_3 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(413, 455, 75, 40), 2)
     # creating the hard button design outline
-
-
 
     temp_font = pygame.font.Font(MENU_FONT, 35)
     temp_text = temp_font.render("Press 1 to view game won screen outline...", 0, TEXT_COLOR)
@@ -76,6 +75,7 @@ def main_menu():
     temp_text_surf2 = temp_text2.get_rect(center=(300, 600))
     screen.blit(temp_text2, temp_text_surf2)
     # this is temporary code so the game won and game over screen outlines can be viewed
+
 
 def game_over():
     # the game won screen is displayed if player wins and
@@ -122,7 +122,6 @@ def game_over():
         inner_rect_2 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(259, 355, 85, 40), 2)
 
         # outline for the game lost screen
-
 
 
 main_menu()
