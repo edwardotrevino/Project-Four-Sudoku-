@@ -12,7 +12,7 @@ class Board:
         self.difficulty = difficulty
         self.selected_row = None  # The currently selected row
         self.selected_col = None  # The currently selected column
-        self.cells = [[Cell(0, row, col, screen) for col in range(9)] for row in range(9)]
+        self.cells = [[Cell(0, row, col, screen) for col in range(9)] for row in range(9)] # create a 2D list of cells to represent the Sudoku board
 
     def draw(self):
         for i in range(1, 3):
@@ -65,7 +65,10 @@ class Board:
 
 
     def clear(self):
-        pass
+        # clear the value of the selected cell if it is editable
+        cell = self.cells[self.selected_row][self.selected_col]
+        if cell.editable:
+            cell.value = 0
         
     def sketch(self, value):
         # Set the sketched value of the selected cell
@@ -76,7 +79,12 @@ class Board:
         self.cells[self.selected_row][self.selected_col].value = value
 
     def reset_to_original(self):
-        pass
+        # reset the board to its original state by clearing all editable cells
+        for i in range(9):
+            for j in range(9):
+                cell = self.cells[i][j]
+                if cell.editable:
+                    cell.value = 0
 
     def is_full(self):
         for row in range(9):
