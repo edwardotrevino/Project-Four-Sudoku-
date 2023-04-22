@@ -19,7 +19,7 @@ class Cell:
 
     def draw(self):
         # Determine the position and size of the cell on the screen
-        cell_size = 60
+        cell_size = 55
         cell_padding = 10
         cell_x = self.col * cell_size + cell_padding
         cell_y = self.row * cell_size + cell_padding
