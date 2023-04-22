@@ -10,7 +10,8 @@ class Board:
         self.height = height
         self.screen = screen
         self.difficulty = difficulty
-
+        self.selected_row = None  # The currently selected row
+        self.selected_col = None  # The currently selected column
         self.cells = [[Cell(0, row, col, screen) for col in range(9)] for row in range(9)]
 
     def draw(self):
@@ -41,8 +42,8 @@ class Board:
         # draws cells on the sudoku screen (cell size might be too big for the size of our board in the window)
 
     def select(self, row, col):
-        self.row = row
-        self.col = col
+        self.selected_row = row  # Set the selected row to the provided row
+        self.selected_col = col  # Set the selected column to the provided column
 
     def click(self, x, y):
         if 0 <= x <= 600 and 0 <= y <= 600:
@@ -65,12 +66,14 @@ class Board:
 
     def clear(self):
         pass
-
+        
     def sketch(self, value):
-        self.value = value
+        # Set the sketched value of the selected cell
+        self.cells[self.selected_row][self.selected_col].set_sketched_value(value)
 
     def place_number(self, value):
-        self.value = value
+        # Set the value of the selected cell
+        self.cells[self.selected_row][self.selected_col].value = value
 
     def reset_to_original(self):
         pass
