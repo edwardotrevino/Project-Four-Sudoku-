@@ -9,10 +9,13 @@ class Cell:
         self.col = col
         self.screen = screen
         self.selected = False
+        self.editable = False  # New editable attribute added
         self.font = pygame.font.SysFont(MENU_FONT, 50)
+        self.sketched_value = None
 
     def set_cell_value(self, value):
         self.value = value
+        self.editable = True # makes the cell "editable" if it is set by the user
 
     def set_sketched_value(self, value):
         self.value = value
