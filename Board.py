@@ -79,13 +79,32 @@ class Board:
         pass
 
     def is_full(self):
-        pass
+        for row in range(9):
+            for col in range(9):
+                if self.cells[row][col].value == 0:
+                    return False
+
+                # after looping through all the cells, if one of the cells has a value of 0,
+                # then the board is not full and this method returns False,
+                # if no values are zero, then returns True
+
+        return True
 
     def update_board(self):
-        pass
+        self.cells = [[Cell([row][col], row, col, self.screen) for col in range(9)] for row in range(9)]
+
+        # updates the board with the new values in each cell after a possible change
+        # [row][col] is the value at that position in the underlying 2d board,
+        # and that value is passed to the cell corresponding to that row and col
 
     def find_empty(self):
-        pass
+        for row in range(9):
+            for col in range(9):
+                if self.cells[row][col].value == 0:
+                    return (col, row)
+
+                    # when the first cell that contains a value of 0 is found, meaning it is empty,
+                    # a tuple of the col (x) and row (y) is returned
 
     def check_board(self):
         pass
