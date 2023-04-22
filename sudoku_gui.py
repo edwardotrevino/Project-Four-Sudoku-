@@ -123,8 +123,36 @@ def game_over():
 
         # outline for the game lost screen
 
+def draw():
+    box_width = 200
+    box_height = 200
+    # these values should be in the constants file, will move them soon
+    # toying with the numbers to see what looks best
 
-main_menu()
+    for i in range(1,3):
+        pygame.draw.line(screen, (0,0,0), (box_width * i, 0), (box_width * i, HEIGHT - 100), 4)
+    # bolded lines delineating vertical lines 3x3 box
+
+    for j in range(1,9):
+        if j == 3 or j == 6:
+            continue
+        pygame.draw.line(screen, (0,0,0), ((box_width / 3) * j, 0), ((box_width / 3) * j, HEIGHT - 100), 1)
+    # vertical thin lines delineating individual cell in 3x3 box
+
+    for k in range(1,4):
+        pygame.draw.line(screen, (0,0,0), (0, box_height * k), (WIDTH, box_height * k), 4)
+    # bolded lines delineating horizontal lines 3x3 box
+
+    for l in range(1, 9):
+        if l == 3 or l == 6:
+            continue
+        pygame.draw.line(screen, (0,0,0), (0, (box_height / 3) * l), (WIDTH, (box_height / 3) * l), 1)
+    # horizontal thin lines delineating individual cell in 3x3 box
+
+
+# main_menu()
+# temporarily removed main_menu function so we can view the 9x9 sudoku screen
+draw()
 
 while True:
     for event in pygame.event.get():
