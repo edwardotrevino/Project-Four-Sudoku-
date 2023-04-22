@@ -80,9 +80,9 @@ class Board:
 
     def reset_to_original(self):
         # reset the board to its original state by clearing all editable cells
-        for i in range(9):
-            for j in range(9):
-                cell = self.cells[i][j]
+        for row in range(9):
+            for col in range(9):
+                cell = self.cells[row][col]
                 if cell.editable:
                     cell.value = 0
 
