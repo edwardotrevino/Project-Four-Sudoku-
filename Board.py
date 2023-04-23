@@ -115,4 +115,35 @@ class Board:
                     # a tuple of the col (x) and row (y) is returned
 
     def check_board(self):
-        pass
+        # Check rows for duplicates
+        for row in self.cells:
+            values = []
+            for cell in row:
+                if cell.value != 0:
+                    values.append(cell.value)
+            if len(values) != len(set(values)):
+                return False
+
+        # Check columns for duplicates
+        for col in range(9):
+            values = []
+            for row in range(9):
+                cell = self.cells[row][col]
+                if cell.value != 0:
+                    values.append(cell.value)
+            if len(values) != len(set(values)):
+                return False
+
+        # Check 3x3 boxes for duplicates
+        for box_row in range(0, 9, 3):
+            for box_col in range(0, 9, 3):
+                values = []
+                for row in range(box_row, box_row + 3):
+                    for col in range(box_col, box_col + 3):
+                        cell = self.cells[row][col]
+                        if cell.value != 0:
+                            values.append(cell.value)
+                if len(values) != len(set(values)):
+                    return False
+
+        return True
