@@ -2,7 +2,6 @@ import pygame
 from Cell import Cell
 
 
-
 class Board:
 
     def __init__(self, width, height, screen, difficulty):
@@ -12,7 +11,8 @@ class Board:
         self.difficulty = difficulty
         self.selected_row = None  # The currently selected row
         self.selected_col = None  # The currently selected column
-        self.cells = [[Cell(0, row, col, screen) for col in range(9)] for row in range(9)] # create a 2D list of cells to represent the Sudoku board
+        self.cells = [[Cell(0, row, col, screen) for col in range(9)] for row in range(9)]
+        # create a 2D list of cells to represent the Sudoku board
 
     def draw(self):
         for i in range(1, 3):
@@ -57,12 +57,11 @@ class Board:
             # this is the same cell size that is in the draw method of the Cell class
             # the cell_size and cell_padding was summed to give 65
 
-            self.x = self.width // cell_size # if x is 200, then 200 // 65 is 3
-            self.y = self.height // cell_size # if y is 300, then 300 // 65 is 4
-            return (self.x, self.y) # the return would be (3,4) for example
+            self.x = self.width // cell_size  # if x is 200, then 200 // 65 is 3
+            self.y = self.height // cell_size  # if y is 300, then 300 // 65 is 4
+            return self.x, self.y
+            # the return would be (3,4) for example
         return None
-
-
 
     def clear(self):
         # clear the value of the selected cell if it is editable
@@ -109,7 +108,7 @@ class Board:
         for row in range(9):
             for col in range(9):
                 if self.cells[row][col].value == 0:
-                    return (col, row)
+                    return col, row
 
                     # when the first cell that contains a value of 0 is found, meaning it is empty,
                     # a tuple of the col (x) and row (y) is returned

@@ -15,7 +15,8 @@ class Cell:
 
     def set_cell_value(self, value):
         self.value = value
-        self.editable = True # makes the cell "editable" if it is set by the user
+        self.editable = True
+        # makes the cell "editable" if it is set by the user
 
     def set_sketched_value(self, value):
         self.value = value

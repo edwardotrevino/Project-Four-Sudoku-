@@ -1,4 +1,5 @@
-import math, random
+import random
+# import math was unused, so I removed it if we need it later we can add it back
 
 
 class SudokuGenerator:
