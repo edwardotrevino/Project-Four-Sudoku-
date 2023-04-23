@@ -149,10 +149,49 @@ def draw():
         pygame.draw.line(screen, (0,0,0), (0, (box_height / 3) * l), (WIDTH, (box_height / 3) * l), 1)
     # horizontal thin lines delineating individual cell in 3x3 box
 
+def sudoku_buttons(): # temporary function to hold the code for the three buttons
+    game_restart_button_font = pygame.font.Font(BUTTON_TEXT_FONT, BUTTON_TEXT_SIZE + 5)
+    game_restart_button_text = game_restart_button_font.render("RESTART", 0, BUTTON_TEXT_COLOR)
+    game_restart_button_box = pygame.Surface((game_restart_button_text.get_size()[0] + 5, game_restart_button_text.get_size()[1] + 5))
+    game_restart_button_box.fill(BUTTON_BG_COLOR)
+    game_restart_button_box.blit(game_restart_button_text, (2.5, 2.5))
+    game_restart_button_box_rect = game_restart_button_box.get_rect(center=(305, 650))
+    screen.blit(game_restart_button_box, game_restart_button_box_rect)
+
+    game_restart_button_rect = pygame.draw.rect(screen, RECTANGLE_COLOR, pygame.Rect(238, 625, 135, 50), 5)
+    game_outer_rect_1 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(238, 625, 135, 50), 2)
+    game_inner_rect_1 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(243, 630, 125, 40), 2)
+
+    game_exit_button_font = pygame.font.Font(BUTTON_TEXT_FONT, BUTTON_TEXT_SIZE + 5)
+    game_exit_button_text = game_exit_button_font.render("EXIT", 0, BUTTON_TEXT_COLOR)
+    game_exit_button_box = pygame.Surface((game_exit_button_text.get_size()[0] + 5, game_exit_button_text.get_size()[1] + 5))
+    game_exit_button_box.fill(BUTTON_BG_COLOR)
+    game_exit_button_box.blit(game_exit_button_text, (2.5, 2.5))
+    game_exit_button_box_rect = game_exit_button_box.get_rect(center=(480, 650))
+    screen.blit(game_exit_button_box, game_exit_button_box_rect)
+
+    game_exit_button_rect = pygame.draw.rect(screen, RECTANGLE_COLOR, pygame.Rect(438, 625, 85, 50), 5)
+    game_outer_rect_2 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(438, 625, 85, 50), 2)
+    game_inner_rect_2 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(443, 630, 75, 40), 2)
+
+    game_reset_button_font = pygame.font.Font(BUTTON_TEXT_FONT, BUTTON_TEXT_SIZE + 5)
+    game_reset_button_text = game_reset_button_font.render("RESET", 0, BUTTON_TEXT_COLOR)
+    game_reset_button_box = pygame.Surface((game_reset_button_text.get_size()[0] + 5, game_reset_button_text.get_size()[1] + 5))
+    game_reset_button_box.fill(BUTTON_BG_COLOR)
+    game_reset_button_box.blit(game_reset_button_text, (2.5, 2.5))
+    game_reset_button_box_rect = game_reset_button_box.get_rect(center=(120, 650))
+    screen.blit(game_reset_button_box, game_reset_button_box_rect)
+
+    game_reset_button_rect = pygame.draw.rect(screen, RECTANGLE_COLOR, pygame.Rect(68, 625, 106, 50), 5)
+    game_outer_rect_2 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(68, 625, 106, 50), 2)
+    game_inner_rect_2 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(73, 630, 96, 40), 2)
+
 
 # main_menu()
 # temporarily removed main_menu function so we can view the 9x9 sudoku screen
 draw()
+sudoku_buttons()
+
 
 while True:
     for event in pygame.event.get():
