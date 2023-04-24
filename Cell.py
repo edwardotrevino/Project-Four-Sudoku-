@@ -23,8 +23,12 @@ class Cell:
 
     def draw(self):
         # Determine the position and size of the cell on the screen
-        cell_size = 55
-        cell_padding = 10
+
+        # cell_size = 55
+        cell_size = 67
+        # cell_padding = 10
+        cell_padding = 0
+
         cell_x = self.col * cell_size + cell_padding
         cell_y = self.row * cell_size + cell_padding
         cell_rect = pygame.Rect(cell_x, cell_y, cell_size, cell_size)
