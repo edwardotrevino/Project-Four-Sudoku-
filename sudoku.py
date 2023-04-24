@@ -180,7 +180,7 @@ while True:
                 if game_reset_button_rect.collidepoint(event.pos):
                     pass
 
-            if medium_button_rect.collidepoint(event.pos):  # this is the response to pressing the hard button
+            if hard_button_rect.collidepoint(event.pos):  # this is the response to pressing the hard button
 
                 screen.fill(GAME_BG_COLOR)  # active-game background
                 easy_sudoku = generate_sudoku(9, 50)  # generates sudoku board with 30 removed cells
