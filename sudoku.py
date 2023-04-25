@@ -134,9 +134,9 @@ while True:
             if medium_button_rect.collidepoint(event.pos):  # this is the response to pressing the medium button
 
                 screen.fill(GAME_BG_COLOR)  # active-game background
-                easy_sudoku = generate_sudoku(9, 40)  # generates sudoku board with 30 removed cells
-                easy_board = Board(WIDTH, HEIGHT - 100, screen, "medium")
-                easy_board.draw()  # draws sudoku board on the screen
+                medium_sudoku = generate_sudoku(9, 40)  # generates sudoku board with 30 removed cells
+                medium_board = Board(WIDTH, HEIGHT - 100, screen, "medium", medium_sudoku)
+                medium_board.draw()  # draws sudoku board on the screen
 
                 # this is just the minimum code so that the board can show up on the screen
 
@@ -168,9 +168,9 @@ while True:
             if hard_button_rect.collidepoint(event.pos):  # this is the response to pressing the hard button
 
                 screen.fill(GAME_BG_COLOR)  # active-game background
-                easy_sudoku = generate_sudoku(9, 50)  # generates sudoku board with 30 removed cells
-                easy_board = Board(WIDTH, HEIGHT - 100, screen, "hard")
-                easy_board.draw()  # draws sudoku board on the screen
+                hard_sudoku = generate_sudoku(9, 50)  # generates sudoku board with 30 removed cells
+                hard_board = Board(WIDTH, HEIGHT - 100, screen, "hard", hard_sudoku)
+                hard_board.draw()  # draws sudoku board on the screen
 
                 # this is just the minimum code so that the board can show up on the screen
 
