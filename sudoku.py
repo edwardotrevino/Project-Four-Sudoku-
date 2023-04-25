@@ -229,10 +229,10 @@ while True:
                 draw_restart_back_exit()
 
             if board.is_full():
+                screen.fill(MENU_BG_COLOR)  # appears if the player is able to add all the correct values
                 image = pygame.image.load("sudoku_test_img.jpeg")
                 image = pygame.transform.scale(image, (600, 700))
                 screen.blit(image, (0, 0))
-                screen.fill(MENU_BG_COLOR)  # appears if the player is able to add all the correct values
                 game_won_font = pygame.font.Font(MENU_FONT, MENU_TEXT_SIZE)
                 game_won_text = game_won_font.render("You Won!", 0, TEXT_COLOR)
                 game_won_surf = game_won_text.get_rect(center=(300, 200))
