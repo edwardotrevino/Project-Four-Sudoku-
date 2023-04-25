@@ -71,11 +71,6 @@ game_restart_button_box = pygame.Surface((game_restart_button_text.get_size()[0]
 game_restart_button_box.fill(BUTTON_BG_COLOR)
 game_restart_button_box.blit(game_restart_button_text, (2.5, 2.5))
 game_restart_button_box_rect = game_restart_button_box.get_rect(center=(305, 650))
-# screen.blit(game_restart_button_box, game_restart_button_box_rect)
-#
-# game_restart_button_rect = pygame.draw.rect(screen, RECTANGLE_COLOR, pygame.Rect(238, 625, 135, 50), 5)
-# game_outer_rect_1 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(238, 625, 135, 50), 2)
-# game_inner_rect_1 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(243, 630, 125, 40), 2)
 
 game_exit_button_font = pygame.font.Font(BUTTON_TEXT_FONT, BUTTON_TEXT_SIZE + 5)
 game_exit_button_text = game_exit_button_font.render("EXIT", 0, BUTTON_TEXT_COLOR)
@@ -83,11 +78,6 @@ game_exit_button_box = pygame.Surface((game_exit_button_text.get_size()[0] + 5, 
 game_exit_button_box.fill(BUTTON_BG_COLOR)
 game_exit_button_box.blit(game_exit_button_text, (2.5, 2.5))
 game_exit_button_box_rect = game_exit_button_box.get_rect(center=(480, 650))
-# screen.blit(game_exit_button_box, game_exit_button_box_rect)
-#
-# game_exit_button_rect = pygame.draw.rect(screen, RECTANGLE_COLOR, pygame.Rect(438, 625, 85, 50), 5)
-# game_outer_rect_2 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(438, 625, 85, 50), 2)
-# game_inner_rect_2 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(443, 630, 75, 40), 2)
 
 game_reset_button_font = pygame.font.Font(BUTTON_TEXT_FONT, BUTTON_TEXT_SIZE + 5)
 game_reset_button_text = game_reset_button_font.render("RESET", 0, BUTTON_TEXT_COLOR)
@@ -95,11 +85,6 @@ game_reset_button_box = pygame.Surface((game_reset_button_text.get_size()[0] + 5
 game_reset_button_box.fill(BUTTON_BG_COLOR)
 game_reset_button_box.blit(game_reset_button_text, (2.5, 2.5))
 game_reset_button_box_rect = game_reset_button_box.get_rect(center=(120, 650))
-# screen.blit(game_reset_button_box, game_reset_button_box_rect)
-#
-# game_reset_button_rect = pygame.draw.rect(screen, RECTANGLE_COLOR, pygame.Rect(68, 625, 106, 50), 5)
-# game_outer_rect_3 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(68, 625, 106, 50), 2)
-# game_inner_rect_3 = pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(73, 630, 96, 40), 2)
 
 
 
@@ -114,6 +99,8 @@ while True:
                 screen.fill(GAME_BG_COLOR) # active-game background
                 easy_sudoku = generate_sudoku(9, 30) # generates sudoku board with 30 removed cells
                 easy_board = Board(WIDTH, HEIGHT - 100, screen, "easy")
+                print(easy_sudoku)
+                easy_board.cells = [[Cell(1,row,col,screen) for col in range(9)] for row in range(9)]
                 easy_board.draw() # draws sudoku board on the screen
 
                 # this is just the minimum code so that the board can show up on the screen
