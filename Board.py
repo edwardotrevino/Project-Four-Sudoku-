@@ -4,14 +4,14 @@ from Cell import Cell
 
 class Board:
 
-    def __init__(self, width, height, screen, difficulty):
+    def __init__(self, width, height, screen, difficulty, sudoku):
         self.width = width
         self.height = height
         self.screen = screen
         self.difficulty = difficulty
         self.selected_row = None  # The currently selected row
         self.selected_col = None  # The currently selected column
-        self.cells = [[Cell(0, row, col, screen) for col in range(9)] for row in range(9)]
+        self.cells = [[Cell(sudoku[i][j],i,j,screen) for i in range(9)] for j in range(9)]
         # create a 2D list of cells to represent the Sudoku board
 
     def draw(self):
@@ -47,7 +47,6 @@ class Board:
 
     def click(self, x, y):
         if 0 <= x <= 600 and 0 <= y <= 600:
-
             # if the tuple coordinates from event.pos is in the board, which is 600x600
             # then the below assignment will return the row (x) and col (y) values
 
@@ -68,7 +67,7 @@ class Board:
         cell = self.cells[self.selected_row][self.selected_col]
         if cell.editable:
             cell.value = 0
-        
+
     def sketch(self, value):
         # Set the sketched value of the selected cell
         self.cells[self.selected_row][self.selected_col].set_sketched_value(value)
