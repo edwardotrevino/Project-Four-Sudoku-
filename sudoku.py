@@ -98,10 +98,7 @@ while True:
 
                 screen.fill(GAME_BG_COLOR) # active-game background
                 easy_sudoku = generate_sudoku(9, 30) # generates sudoku board with 30 removed cells
-                easy_board = Board(WIDTH, HEIGHT - 100, screen, "easy")
-                print(easy_sudoku)
-                cells2 = [[Cell(easy_sudoku[i][j],i,j,screen) for i in range(9)] for j in range(9)]
-                easy_board.cells = cells2
+                easy_board = Board(WIDTH, HEIGHT - 100, screen, "easy", easy_sudoku)
                 easy_board.draw() # draws sudoku board on the screen
 
                 # this is just the minimum code so that the board can show up on the screen
@@ -203,5 +200,4 @@ while True:
                     pass
 
     pygame.display.update()
-
 
