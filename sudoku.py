@@ -180,7 +180,9 @@ while True:
 
             if game_back_button_rect.collidepoint(event.pos):
                 board = None                # sets board to None to ensure the easy, medium, and hard buttons work properly when sent back to the menu
-                screen.fill(GAME_BG_COLOR)  # active-game background
+                image = pygame.image.load("sudoku_test_img.jpeg")
+                image = pygame.transform.scale(image, (600, 700))
+                screen.blit(image, (0, 0))
                 main_menu()
                 game_mode_select()
                 easy_medium_hard_buttons()
