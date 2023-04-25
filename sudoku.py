@@ -100,7 +100,8 @@ while True:
                 easy_sudoku = generate_sudoku(9, 30) # generates sudoku board with 30 removed cells
                 easy_board = Board(WIDTH, HEIGHT - 100, screen, "easy")
                 print(easy_sudoku)
-                easy_board.cells = [[Cell(1,row,col,screen) for col in range(9)] for row in range(9)]
+                cells2 = [[Cell(easy_sudoku[i][j],i,j,screen) for i in range(9)] for j in range(9)]
+                easy_board.cells = cells2
                 easy_board.draw() # draws sudoku board on the screen
 
                 # this is just the minimum code so that the board can show up on the screen
