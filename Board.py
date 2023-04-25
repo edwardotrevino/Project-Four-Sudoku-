@@ -98,7 +98,7 @@ class Board:
         return True
 
     def update_board(self):
-        self.cells = [[Cell([row][col], row, col, self.screen) for col in range(9)] for row in range(9)]
+        self.cells = [[Cell(self.cells[row][col], row, col, self.screen) for col in range(9)] for row in range(9)]
 
         # updates the board with the new values in each cell after a possible change
         # [row][col] is the value at that position in the underlying 2d board,
