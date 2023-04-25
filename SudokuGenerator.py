@@ -1,7 +1,4 @@
 import random
-# import math was unused, so I removed it if we need it later we can add it back
-
-
 class SudokuGenerator:
 
     def __init__(self, row_length, removed_cells):
@@ -40,7 +37,6 @@ class SudokuGenerator:
         return True
 
     def valid_in_box(self, row_start, col_start, num):
-        # not completely sure of application
         if 0 <= row_start <= 2:
             row_start = 0
         elif 3 <= row_start <= 5:
@@ -81,8 +77,6 @@ class SudokuGenerator:
 
         # if the num is already in the 3x3 box or the specified row or col;
         # then is_valid returns False, if not, is_valid returns True
-        # not sure if this method should return false if user tries to change randomly generated numbers
-        # or if that is determined in a different method, if not this should work
 
     def fill_box(self, row_start, col_start):
         # Adjust row_start to the first row of the corresponding 3x3 box

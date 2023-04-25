@@ -140,7 +140,6 @@ while True:
                 sudoku = easy_sudoku
                 board = easy_board
                 easy_board.draw() # draws sudoku board on the screen
-                # this is just the minimum code so that the board can show up on the screen
                 draw_restart_back_exit()
             if medium_button_rect.collidepoint(event.pos):  # this is the response to pressing the medium button
                 screen.fill(GAME_BG_COLOR)  # active-game background
@@ -151,7 +150,6 @@ while True:
                 sudoku = medium_sudoku
                 board = medium_board
                 medium_board.draw()  # draws sudoku board on the screen
-                # this is just the minimum code so that the board can show up on the screen
                 draw_restart_back_exit()
             if hard_button_rect.collidepoint(event.pos):  # this is the response to pressing the hard button
                 screen.fill(GAME_BG_COLOR)  # active-game background
@@ -162,9 +160,8 @@ while True:
                 sudoku = hard_sudoku
                 board = hard_board
                 hard_board.draw()  # draws sudoku board on the screen
-                # this is just the minimum code so that the board can show up on the screen
                 draw_restart_back_exit()
-        if event.type == pygame.MOUSEBUTTONDOWN and board != None:   # makes sure that the board exists before trying to use the restart, reset, and exit functions
+        if event.type == pygame.MOUSEBUTTONDOWN and board != None:      # makes sure that the board exists before trying to use the restart, reset, and exit functions
 
             if game_restart_button_rect.collidepoint(event.pos):
                 screen.fill(GAME_BG_COLOR)  # active-game background
@@ -187,17 +184,16 @@ while True:
                 game_mode_select()
                 easy_medium_hard_buttons()
 
-
-        if event.type == pygame.MOUSEBUTTONDOWN:  # *very experimental from here on*
+        if event.type == pygame.MOUSEBUTTONDOWN:
             try:
-                x, y = event.pos                      # defines the x and y coordinates for passing into the board.click function
+                x, y = event.pos             # defines the x and y coordinates for passing into the board.click function
                 if board.click(x, y) is None:
                     pass
                 else:
                     board.select(board.row, board.col)  # selects the cell that board.click returns
             except:
                 pass
-        if event.type == pygame.KEYDOWN:     # very experimental keyboard input logic
+        if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
                 key = 1
             elif event.key == pygame.K_2:
@@ -218,11 +214,14 @@ while True:
                 key = 9
             else:
                 key = 0
-            board.place_number(key)             # places the correct value of the key pressed onto the board, in the selected cell
-            if board.check_board():             # checks whether or not the board is valid before drawing the changes
+            board.place_number(key)          # places the correct value of the key pressed onto the board, in the selected cell
+            if board.check_board():          # checks if the board is valid before drawing the changes
                 board.draw()
             else:
-                screen.fill(MENU_BG_COLOR)      # more complete game_won screen copied over from sudoku_gui, appears if check_board returns false
+                screen.fill(MENU_BG_COLOR)      # appears if check_board returns false
+                image = pygame.image.load("sudoku_test_img.jpeg")
+                image = pygame.transform.scale(image, (600, 700))
+                screen.blit(image, (0, 0))
                 game_lost_font = pygame.font.Font(MENU_FONT, MENU_TEXT_SIZE)
                 game_lost_text = game_lost_font.render("You Lose :(", 0, TEXT_COLOR)
                 game_lost_surf = game_lost_text.get_rect(center=(300, 200))
@@ -230,7 +229,10 @@ while True:
                 draw_restart_back_exit()
 
             if board.is_full():
-                screen.fill(MENU_BG_COLOR)  # more complete game_lost screen copied over from sudoku_gui, appears if the player is able to add all the correct values
+                image = pygame.image.load("sudoku_test_img.jpeg")
+                image = pygame.transform.scale(image, (600, 700))
+                screen.blit(image, (0, 0))
+                screen.fill(MENU_BG_COLOR)  # appears if the player is able to add all the correct values
                 game_won_font = pygame.font.Font(MENU_FONT, MENU_TEXT_SIZE)
                 game_won_text = game_won_font.render("You Won!", 0, TEXT_COLOR)
                 game_won_surf = game_won_text.get_rect(center=(300, 200))

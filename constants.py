@@ -26,5 +26,3 @@ BUTTON_TEXT_SIZE = 30
 BOX_LINE_WIDTH = None
 CELL_LINE_WIDTH = None
 
-# this constants list and the colors for the constants are not final,
-# constants and colors can be changed or added as needed

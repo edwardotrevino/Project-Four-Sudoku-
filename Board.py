@@ -20,21 +20,9 @@ class Board:
         # bolded lines delineating vertical lines of 3x3 box
         # self.width and self.height assumed to be 600 each
 
-        # for i in range(1, 9):
-        #     if i == 3 or i == 6:
-        #         continue
-        #     pygame.draw.line(self.screen, (0, 0, 0), ((self.width / 9) * i, 0), ((self.width / 9) * i, self.height), 1)
-        # vertical thin lines delineating individual cell in 3x3 box
-
         for i in range(1, 4):
             pygame.draw.line(self.screen, (0, 0, 0), (0, (self.height / 3) * i), (self.width, (self.height / 3) * i), 4)
         # bolded lines delineating horizontal lines of 3x3 box
-
-        # for i in range(1, 9):
-        #     if i == 3 or i == 6:
-        #         continue
-        #     pygame.draw.line(self.screen, (0, 0, 0), (0, (self.height / 9) * i), (self.width, (self.height / 9) * i), 1)
-        # horizontal thin lines delineating individual cell in 3x3 box
 
         for i in range(9):
             for j in range(9):
