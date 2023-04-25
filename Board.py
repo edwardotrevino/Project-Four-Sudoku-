@@ -50,15 +50,15 @@ class Board:
             # if the tuple coordinates from event.pos is in the board, which is 600x600
             # then the below assignment will return the row (x) and col (y) values
 
-            cell_size = 65
+            cell_size = 67
 
             # this variable can be changed or obtained from somewhere else
             # this is the same cell size that is in the draw method of the Cell class
             # the cell_size and cell_padding was summed to give 65
 
-            self.x = self.width // cell_size  # if x is 200, then 200 // 65 is 3
-            self.y = self.height // cell_size  # if y is 300, then 300 // 65 is 4
-            return self.x, self.y
+            self.col = y // cell_size  # if x is 200, then 200 // 65 is 3
+            self.row = x // cell_size  # if y is 300, then 300 // 65 is 4
+            return self.row, self.col
             # the return would be (3,4) for example
         return None
 
@@ -74,7 +74,8 @@ class Board:
 
     def place_number(self, value):
         # Set the value of the selected cell
-        self.cells[self.selected_row][self.selected_col].value = value
+        if self.cells[self.selected_row][self.selected_col].value == 0:
+            self.cells[self.selected_row][self.selected_col].value = value
 
     def reset_to_original(self):
         # reset the board to its original state by clearing all editable cells
